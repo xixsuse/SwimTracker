@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3f51b5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="colorCardBorder">@android:color/holo_blue_dark</color>
+    <color name="colorNavigationBar">@android:color/holo_blue_light</color>
+    <color name="Freestyle">@color/caldroid_holo_blue_dark</color>
+    <color name="Backstroke">@color/caldroid_light_red</color>
+    <color name="Breaststroke">@color/caldroid_darker_gray</color>
+    <color name="Butterfly">@color/caldroid_555</color>
+    <color name="Choice">@color/caldroid_lighter_gray</color>
+    <color name="colorCardBg">@color/caldroid_lighter_gray</color>
+    <color name="colorWarmup">@android:color/holo_red_dark</color>
+    <color name="colorWarmupCard">#d5a0a0</color>
+    <color name="colorMain">@android:color/holo_green_dark</color>
+    <color name="colorMainCard">@android:color/holo_green_light</color>
+    <color name="colorCoolDown">@android:color/holo_blue_dark</color>
+    <color name="colorCoolDownCard">#a0c0d5</color>
+
+    <color name="black_overlay">#66000000</color>
+</resources>

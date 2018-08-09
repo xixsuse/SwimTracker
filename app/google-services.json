@@ -1,0 +1,59 @@
+{
+  "project_info": {
+    "project_number": "874610684501",
+    "firebase_url": "https://swimtracker-7c3af.firebaseio.com",
+    "project_id": "swimtracker-7c3af",
+    "storage_bucket": "swimtracker-7c3af.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:874610684501:android:662469c1038556a1",
+        "android_client_info": {
+          "package_name": "com.example.dave.swimtracker"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "874610684501-befio3pcf1lat7ckj2govaf77upbt7ma.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.dave.swimtracker",
+            "certificate_hash": "0dfde234622cb9d46b80f54814f143f4106b8396"
+          }
+        },
+        {
+          "client_id": "874610684501-aiedud6g9ln9aq1t6fao1sb5k1ff74to.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "874610684501-aiedud6g9ln9aq1t6fao1sb5k1ff74to.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBIE1M2AaUa_Br5od-Ac0ZC_9yJ9XmdK9Y"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "874610684501-aiedud6g9ln9aq1t6fao1sb5k1ff74to.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

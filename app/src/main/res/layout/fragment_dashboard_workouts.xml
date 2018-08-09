@@ -1,0 +1,72 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/layoutWorkout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="8dp"
+    android:background="#ffffff"
+    android:orientation="vertical">
+
+
+    <TextView
+        android:id="@+id/workoutHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center" />
+
+    <com.example.dave.swimtracker.WorkoutChart
+        android:id="@+id/chart"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="0.8">
+
+    </com.example.dave.swimtracker.WorkoutChart>
+
+    <LinearLayout
+        android:id="@+id/workoutActions"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/actionNotes"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:background="@drawable/border_actions"
+            android:drawableLeft="@drawable/ic_baseline_notes_24px"
+            android:drawablePadding="16dp"
+            android:gravity="center_vertical"
+            android:paddingBottom="8dp"
+            android:paddingTop="8dp"
+            android:text="Notes"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/actionDate"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/border_actions"
+            android:drawableLeft="@drawable/ic_baseline_calendar_today_24px"
+            android:gravity="center"
+            android:text="Reschedule"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/actionDelete"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:background="@drawable/border_actions"
+            android:drawableLeft="@drawable/ic_delete_black_24px"
+            android:gravity="center"
+            android:text="Delete"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+</LinearLayout>

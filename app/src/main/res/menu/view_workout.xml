@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:icon="@drawable/ic_edit_black_24px"
+        android:id="@+id/editWorkout"
+        android:title="Edit Workout"
+        app:showAsAction="always">
+    </item>
+    <item
+        android:icon="@drawable/ic_add_black_24px"
+        android:id="@+id/addSet"
+        android:title="Add Set"
+        app:showAsAction="always">
+    </item>
+    <item
+        android:icon="@drawable/ic_baseline_share_24px"
+        android:id="@+id/shareWorkout"
+        android:title="Share Workout"
+        app:showAsAction="ifRoom">
+    </item>
+</menu>

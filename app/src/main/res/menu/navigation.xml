@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:icon="@drawable/ic_baseline_menu_24px"
+        android:title="@string/menu"
+        app:showAsAction="ifRoom">
+        <menu>
+            <item
+                android:id="@+id/navigation_dashboard"
+                android:icon="@drawable/ic_dashboard_black_24dp"
+                android:title="@string/title_dashboard" />
+            <item
+                android:id="@+id/navigation_workouts"
+                android:icon="@drawable/ic_swimming_man"
+                android:title="@string/title_workouts" />
+        </menu>
+    </item>
+</menu>

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- TODO: Update blank fragment layout -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:gravity="top"
+    android:orientation="vertical"
+    android:weightSum="1">
+
+    <LinearLayout
+        android:id="@+id/headerRow"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="0dp"
+        android:weightSum="1">
+
+        <ImageView
+            android:id="@+id/buttonAddToSet"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:paddingLeft="8dp"
+            app:srcCompat="@drawable/ic_add_circle_black_24px" />
+
+        <TextView
+            android:id="@+id/labelSetType"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/buttonDeleteSet"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:paddingRight="8dp"
+            app:srcCompat="@drawable/ic_delete_black_24px" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/roundsRow"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/darker_gray"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/labelRounds"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.4"
+            android:gravity="right"
+            android:text="@string/labelRounds"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/valueRounds"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.2"
+            android:gravity="center_horizontal"
+            android:text="@string/defaultSetRounds"
+            android:textSize="14sp" />
+
+        <SeekBar
+            android:id="@+id/seekRounds"
+            style="@style/Widget.AppCompat.SeekBar.Discrete"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.4"
+            android:max="10"
+            android:progress="0" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/listSetContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/caldroid_lighter_gray"
+        android:orientation="vertical">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/listSetComponents"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"></android.support.v7.widget.RecyclerView>
+    </LinearLayout>
+
+</LinearLayout>
