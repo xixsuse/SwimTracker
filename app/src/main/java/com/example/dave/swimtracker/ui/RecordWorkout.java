@@ -104,7 +104,7 @@ public class RecordWorkout extends AppCompatActivity implements
         NavigationView navigationView = findViewById(R.id.nav_view);
         View header = navigationView.getHeaderView(0);
         TextView text = (TextView) header.findViewById(R.id.textView);
-        text.setText("000000");
+        text.setText("");
 
         // show e-mail/username in drawer header
         /*

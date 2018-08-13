@@ -57,6 +57,7 @@ import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -65,27 +66,13 @@ import static android.view.View.inflate;
 
 public class Dashboard extends Fragment {
 
-    private static AppDatabase mDb;
-    private static long mSwimmerId;
     private DashboardListener mListener;
     private WorkoutViewModel model;
-    private MutableLiveData<Map<Integer, List<WorkoutDataSet>>> workoutData;
 
     // keys for workoutData map
     private static final int UPCOMING_WORKOUTS = 0;
     private static final int OVERDUE_WORKOUTS = 1;
     private static final int RECENT_WORKOUTS = 2;
-
-    // refresh quantities
-    private static final int UPCOMING_NUM = 3;
-    private static final int OVERDUE_NUM = 3;
-    private static final int RECENT_NUM = 5;
-
-    // load/refresh commands
-    private static final int INIT = 0;
-    private static final int LOAD_OVERDUE = 1;
-    private static final int LOAD_UPCOMING = 2;
-    private static final int LOAD_RECENT = 3;
 
     public static class WorkoutDataSet {
         public dbWorkout workout;
@@ -104,11 +91,9 @@ public class Dashboard extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mDb = AppDatabase.getAppDatabase(this.getContext());
 
         WorkoutViewModelFactory factory = new WorkoutViewModelFactory(AppDatabase.getAppDatabase(getContext()));
         model = ViewModelProviders.of(this.getActivity(), factory).get(WorkoutViewModel.class);
-        mSwimmerId = model.getSwimmerId();
 
         model.getDashboard().observe(this, new Observer<Map<Integer, List<WorkoutViewModel.WorkoutDataSet>>>() {
             @Override
@@ -126,8 +111,9 @@ public class Dashboard extends Fragment {
         model.refreshWorkouts();
     }
 
+    // Popup dialog asking user to choose date and completion status of a new workout to be created or cloned
     public void createWorkout() {
-        final Calendar cal = Calendar.getInstance();
+        Calendar cal = Calendar.getInstance();
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         LayoutInflater inflater = getActivity().getLayoutInflater();
@@ -137,27 +123,31 @@ public class Dashboard extends Fragment {
         final Switch completeSwitch = (Switch) dialogContainer.findViewById(R.id.workoutComplete);
         completeSwitch.setChecked(false);
 
-        DatePicker datePicker = dialogLayout.findViewById(R.id.dialogDatePicker);
+        final DatePicker datePicker = dialogLayout.findViewById(R.id.dialogDatePicker);
         datePicker.init(cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), cal.get(Calendar.DAY_OF_MONTH), new DatePicker.OnDateChangedListener() {
             @Override
             public void onDateChanged(DatePicker datePicker, int i, int i1, int i2) {
-                cal.set(Calendar.YEAR, i);
-                cal.set(Calendar.MONTH, i1);
-                cal.set(Calendar.DAY_OF_MONTH, i2);
+                //cal.set(Calendar.YEAR, i);
+                //cal.set(Calendar.MONTH, i1);
+                //cal.set(Calendar.DAY_OF_MONTH, i2);
             }
         });
+
         builder.setView(dialogLayout);
         builder.setMessage(R.string.createDialogMessage).setTitle(R.string.createDialogTitle);
         builder.setPositiveButton(R.string.createDialogNew, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                mListener.createBlankWorkout(cal.getTime(), completeSwitch.isChecked());
+                Calendar workoutCal = new GregorianCalendar(datePicker.getYear(), datePicker.getMonth(), datePicker.getDayOfMonth());
+                mListener.createBlankWorkout(workoutCal.getTime(), completeSwitch.isChecked());
+                dialogInterface.dismiss();
             }
         });
         builder.setNegativeButton(R.string.createDialogClone, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                mListener.selectWorkout(cal.getTime().getTime(), completeSwitch.isChecked(), "Clone Workout");
+                Calendar workoutCal = new GregorianCalendar(datePicker.getYear(), datePicker.getMonth(), datePicker.getDayOfMonth());
+                mListener.selectWorkout(workoutCal.getTime().getTime(), completeSwitch.isChecked(), "Clone Workout");
                 dialogInterface.dismiss();
             }
         });
@@ -166,6 +156,7 @@ public class Dashboard extends Fragment {
         dialog.show();
     }
 
+    // popup dialog called for an individual workout to change the date and/or completion status
     public void scheduleWorkout(final dbWorkout workout) {
         final Calendar cal = Calendar.getInstance();
         cal.setTimeInMillis(workout.getDate());
@@ -210,6 +201,7 @@ public class Dashboard extends Fragment {
         dialogDate.show();
     }
 
+    // popup dialog called by an individual workout to add/edit workout notes
     public void notesWorkout(final dbWorkout workout) {
         AlertDialog.Builder notesDialog = new AlertDialog.Builder(getContext());
         LayoutInflater inflater = getLayoutInflater();
@@ -243,6 +235,7 @@ public class Dashboard extends Fragment {
         dialogDate.show();
     }
 
+    // popup dialog called for an individual workout asking to confirm deletion, then calls async delete task
     public void deleteWorkout(final dbWorkout workout) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
         builder.setTitle(R.string.deleteWorkoutDialog);
@@ -263,6 +256,7 @@ public class Dashboard extends Fragment {
         dialog.show();
     }
 
+    // displays workouts on the dashboard
     public void printWorkouts(Map<Integer, List<WorkoutViewModel.WorkoutDataSet>> workoutMap) {
 
         ViewGroup layout = (ViewGroup) getView().findViewById(R.id.workoutSection);

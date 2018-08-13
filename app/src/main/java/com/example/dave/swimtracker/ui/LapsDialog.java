@@ -130,6 +130,11 @@ public class LapsDialog extends DialogFragment implements SetComponentInterface 
         Stroke initStroke = editor.getStroke();
         if (initStroke != Stroke.MIXED)
             buttonStrokes[Arrays.asList(strokes).indexOf(initStroke)].setSelected(true);
+        else {
+            for (int i = 0; i < buttonStrokes.length; i++) {
+                buttonStrokes[i].setEnabled(false);
+            }
+        }
 
         // Set up the button bars for swim/kick/drill
         final Button buttonSwim = (Button) v.findViewById(R.id.buttonSwim);
@@ -156,9 +161,13 @@ public class LapsDialog extends DialogFragment implements SetComponentInterface 
         }
 
         int initType = editor.getType();
-        //if (initType != SetComponentEditor.TYPE_MIXED)
-        if (initType >= 0 && initType < buttonTypes.length)
+        if (initType != SetComponentEditor.TYPE_MIXED)
             buttonTypes[initType].setSelected(true);
+        else {
+            for (int i = 0; i < buttonTypes.length; i++) {
+                buttonTypes[i].setEnabled(false);
+            }
+        }
 
         Button saveSet = (Button) v.findViewById(R.id.button_next);
         saveSet.setOnClickListener(new Button.OnClickListener() {
@@ -171,6 +180,7 @@ public class LapsDialog extends DialogFragment implements SetComponentInterface 
 
     }
 
+    // loads the set component editor in the background, and updates the UI once complete
     private static void loadEditor(final SetComponentInterface ui, final SetComponentEditor editor, long setComponentId, long setId) {
         new AsyncTask<Long, Void, Void>() {
 

@@ -68,6 +68,10 @@
     <string name="button_createWorkout">Create New Workout</string>
 
     <!-- Laps dialog -->
+    <string name="valueReps">Reps</string>
+    <string name="valueDistance">Distance</string>
+    <string name="valueIntervalType">Interval Type</string>
+
     <string name="valueFreestyle">Free</string>
     <string name="valueBackstroke">Back</string>
     <string name="valueBreaststroke">Breast</string>
