@@ -14,6 +14,10 @@
                 android:id="@+id/navigation_workouts"
                 android:icon="@drawable/ic_swimming_man"
                 android:title="@string/title_workouts" />
+            <item
+                android:id="@+id/navigation_about"
+                android:icon="@drawable/ic_info_black_24dp"
+                android:title="@string/title_about" />
         </menu>
     </item>
 </menu>

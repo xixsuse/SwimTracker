@@ -39,6 +39,9 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.text.SpannableString;
+import android.text.method.LinkMovementMethod;
+import android.text.util.Linkify;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -131,10 +134,9 @@ public class RecordWorkout extends AppCompatActivity implements
                             case R.id.navigation_workouts:
                                 navigate(MY_WORKOUTS);
                                 break;
-                                /*
-                            case R.id.navigation_exit:
-                                logout();
-                                break; */
+                            case R.id.navigation_about:
+                                showAbout();
+                                break;
                         }
                         return true;
                     }
@@ -314,6 +316,32 @@ public class RecordWorkout extends AppCompatActivity implements
                 loadFragment(MyWorkouts.newInstance(args), "myWorkouts");
                 break;
         }
+    }
+
+    private void showAbout() {
+        AlertDialog.Builder aboutDialog = new AlertDialog.Builder(this);
+        LayoutInflater inflater = getLayoutInflater();
+        View aboutLayout = inflater.inflate(R.layout.dialog_about, null);
+
+        LinearLayout dialogContainer = aboutLayout.findViewById(R.id.dialog);
+        final TextView about = (TextView) dialogContainer.findViewById(R.id.about);
+        //final SpannableString linkedAbout = new SpannableString(this.getText(R.string.aboutCredits));
+        //Linkify.addLinks(linkedAbout, Linkify.WEB_URLS);
+        about.setMovementMethod(LinkMovementMethod.getInstance());
+        about.setText(R.string.aboutCredits);
+
+        aboutDialog.setTitle(R.string.aboutTitle);
+
+        aboutDialog.setPositiveButton(R.string.aboutPositive, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+            }
+        });
+
+        aboutDialog.setView(aboutLayout);
+        AlertDialog dialogAbout = aboutDialog.create();
+        dialogAbout.show();
     }
 
     @Override
